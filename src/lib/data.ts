@@ -24,15 +24,17 @@ import p15alt from "@/assets/jojo-p15-alt.jpg";
 import p16alt from "@/assets/jojo-p16-alt.jpg";
 import p17alt from "@/assets/jojo-p17-alt.jpg";
 import p18alt from "@/assets/jojo-p18-alt.jpg";
-import n1 from "@/assets/jojo-n1.png";
-import n1b from "@/assets/jojo-n1-navy.png";
-import n2 from "@/assets/jojo-n2.png";
-import n2b from "@/assets/jojo-n2-pink.png";
-import n3 from "@/assets/jojo-n3.png";
-import n3b from "@/assets/jojo-n3-lavender.png";
-import n4 from "@/assets/jojo-n4.png";
-import n4b from "@/assets/jojo-n4-navy.png";
-import n5 from "@/assets/jojo-n5.png";
+import p5red from "@/assets/jojo-p5-red.jpg";
+import p8black from "@/assets/jojo-p8-black.jpg";
+import n1 from "@/assets/jojo-n1.jpg";
+import n1b from "@/assets/jojo-n1-navy.jpg";
+import n2 from "@/assets/jojo-n2.jpg";
+import n2b from "@/assets/jojo-n2-pink.jpg";
+import n3 from "@/assets/jojo-n3.jpg";
+import n3b from "@/assets/jojo-n3-lavender.jpg";
+import n4 from "@/assets/jojo-n4.jpg";
+import n4b from "@/assets/jojo-n4-navy.jpg";
+import n5 from "@/assets/jojo-n5.jpg";
 
 export const PHONE = "01061318862";
 export const PHONE_INTL = "201061318862";
@@ -125,8 +127,8 @@ export const products: Product[] = [
   { code: "K-201", name: "طقم سويت شيرت وبنطلون أطفال بطبعة", nameEn: "Kids printed sweatshirt and trousers set", categoryId: "kids", category: "ملابس أطفال", colors: ["بني", "كحلي"], sizes: ["3", "4", "5", "6", "7"], image: p2, colorImages: { "بني": p2, "كحلي": p2alt }, isNew: true },
   { code: "K-202", name: "تيشيرت وليجن شتوي مقلم دينو", nameEn: "Kids striped dino winter t-shirt and leggings", categoryId: "kids", category: "ملابس أطفال", colors: ["أوف وايت", "بمبي"], sizes: ["3", "4", "5", "6", "7"], image: p7, colorImages: { "أوف وايت": p7, "بمبي": p7alt }, isNew: true },
   { code: "K-203", name: "سويت شيرت أطفال مقلم وبنطلون كارجو", nameEn: "Kids striped sweatshirt and cargo trousers", categoryId: "kids", category: "ملابس أطفال", colors: ["لبني", "زيتي"], sizes: ["3", "4", "5", "6", "7"], image: p4, colorImages: { "لبني": p4, "زيتي": p4alt }, isNew: false },
-  { code: "K-204", name: "طقم جاكت بسحاب وبنطلون أولادي", nameEn: "Boys zip jacket and trousers set", categoryId: "kids", category: "ملابس أطفال", colors: ["كحلي", "أحمر"], sizes: ["6", "8", "10", "12"], image: p5, isNew: true },
-  { code: "K-205", name: "طقم جاكت بسحاب وكارجو أولادي", nameEn: "Boys zip jacket and cargo set", categoryId: "kids", category: "ملابس أطفال", colors: ["رمادي", "أسود"], sizes: ["6", "8", "10", "12"], image: p8, isNew: false },
+  { code: "K-204", name: "طقم جاكت بسحاب وبنطلون أولادي", nameEn: "Boys zip jacket and trousers set", categoryId: "kids", category: "ملابس أطفال", colors: ["كحلي", "أحمر"], sizes: ["6", "8", "10", "12"], image: p5, colorImages: { "كحلي": p5, "أحمر": p5red }, isNew: true },
+  { code: "K-205", name: "طقم جاكت بسحاب وكارجو أولادي", nameEn: "Boys zip jacket and cargo set", categoryId: "kids", category: "ملابس أطفال", colors: ["رمادي", "أسود"], sizes: ["6", "8", "10", "12"], image: p8, colorImages: { "رمادي": p8, "أسود": p8black }, isNew: false },
   { code: "K-206", name: "طقم جاكت سبيد بسحاب وبنطلون", nameEn: "Kids Speed zip jacket and trousers set", categoryId: "kids", category: "ملابس أطفال", colors: ["أزرق", "رمادي"], sizes: ["6", "8", "10", "12"], image: p9, colorImages: { "أزرق": p9, "رمادي": p9alt }, isNew: false },
   { code: "K-207", name: "طقم جاكت دينو وكارجو", nameEn: "Kids dino jacket and cargo set", categoryId: "kids", category: "ملابس أطفال", colors: ["بيج", "لبني"], sizes: ["6", "8", "10", "12"], image: p12, colorImages: { "بيج": p12, "لبني": p12alt }, isNew: false },
   { code: "K-208", name: "بيجامات بناتي شتوية مطبوعة", nameEn: "Girls printed winter pyjamas", categoryId: "kids", category: "ملابس أطفال", colors: ["لافندر", "منت"], sizes: ["6", "8", "10", "12", "14"], image: p17, colorImages: { "لافندر": p17, "منت": p17alt }, isNew: true },
