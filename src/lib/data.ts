@@ -26,6 +26,11 @@ import p17alt from "@/assets/jojo-p17-alt.jpg";
 import p18alt from "@/assets/jojo-p18-alt.jpg";
 import p5red from "@/assets/jojo-p5-red.jpg";
 import p8black from "@/assets/jojo-p8-black.jpg";
+import p21olive from "@/assets/jojo-p21-olive.jpg";
+import p21cream from "@/assets/jojo-p21-cream.jpg";
+import p19yellow from "@/assets/jojo-p19-yellow.jpg";
+import p19pink from "@/assets/jojo-p19-pink.jpg";
+import n5b from "@/assets/jojo-n5-navy.jpg";
 import n1 from "@/assets/jojo-n1.jpg";
 import n1b from "@/assets/jojo-n1-navy.jpg";
 import n2 from "@/assets/jojo-n2.jpg";
@@ -132,16 +137,16 @@ export const products: Product[] = [
   { code: "K-206", name: "طقم جاكت سبيد بسحاب وبنطلون", nameEn: "Kids Speed zip jacket and trousers set", categoryId: "kids", category: "ملابس أطفال", colors: ["أزرق", "رمادي"], sizes: ["6", "8", "10", "12"], image: p9, colorImages: { "أزرق": p9, "رمادي": p9alt }, isNew: false },
   { code: "K-207", name: "طقم جاكت دينو وكارجو", nameEn: "Kids dino jacket and cargo set", categoryId: "kids", category: "ملابس أطفال", colors: ["بيج", "لبني"], sizes: ["6", "8", "10", "12"], image: p12, colorImages: { "بيج": p12, "لبني": p12alt }, isNew: false },
   { code: "K-208", name: "بيجامات بناتي شتوية مطبوعة", nameEn: "Girls printed winter pyjamas", categoryId: "kids", category: "ملابس أطفال", colors: ["لافندر", "منت"], sizes: ["6", "8", "10", "12", "14"], image: p17, colorImages: { "لافندر": p17, "منت": p17alt }, isNew: true },
-  { code: "K-209", name: "تشكيلة أطقم أطفال متنوعة", nameEn: "Assorted kids coordinated sets", categoryId: "kids", category: "ملابس أطفال", colors: ["بيج", "زيتي", "أوف وايت"], sizes: ["4", "6", "8", "10", "12"], image: p21, isNew: false },
+  { code: "K-209", name: "تشكيلة أطقم أطفال متنوعة", nameEn: "Assorted kids coordinated sets", categoryId: "kids", category: "ملابس أطفال", colors: ["بيج", "زيتي", "أوف وايت"], sizes: ["4", "6", "8", "10", "12"], image: p21, colorImages: { "بيج": p21, "زيتي": p21olive, "أوف وايت": p21cream }, isNew: false },
   { code: "K-210", name: "طقم سويت شيرت مقلم وبنطلون كارجو أطفال", nameEn: "Kids striped sweatshirt and cargo trousers set", categoryId: "kids", category: "ملابس أطفال", colors: ["بني", "كحلي"], sizes: ["4", "6", "8", "10", "12"], image: n1, colorImages: { "بني": n1, "كحلي": n1b }, isNew: true },
   { code: "K-211", name: "تيشيرت بيبي قطن ناعم", nameEn: "Soft cotton baby t-shirt", categoryId: "kids", category: "ملابس أطفال", colors: ["لبني", "بمبي"], sizes: ["0-3", "3-6", "6-9", "9-12"], image: n2, colorImages: { "لبني": n2, "بمبي": n2b }, isNew: true },
   { code: "K-212", name: "طقم سويت شيرت وليجن بناتي بطبعة", nameEn: "Girls printed sweatshirt and leggings set", categoryId: "kids", category: "ملابس أطفال", colors: ["بيج", "لافندر"], sizes: ["2", "3", "4", "5"], image: n3, colorImages: { "بيج": n3, "لافندر": n3b }, isNew: true },
   { code: "K-213", name: "طقم هودي بسحاب وبنطلون أولادي", nameEn: "Boys zip hoodie and trousers set", categoryId: "kids", category: "ملابس أطفال", colors: ["أسود", "كحلي"], sizes: ["6", "8", "10", "12", "14"], image: n4, colorImages: { "أسود": n4, "كحلي": n4b }, isNew: true },
-  { code: "K-214", name: "طقم سويت شيرت وبنطلون بناتي واسع", nameEn: "Girls sweatshirt and wide trousers set", categoryId: "kids", category: "ملابس أطفال", colors: ["رمادي"], sizes: ["6", "8", "10", "12", "14", "16"], image: n5, colorImages: { "رمادي": n5 }, isNew: true },
+  { code: "K-214", name: "طقم سويت شيرت وبنطلون بناتي واسع", nameEn: "Girls sweatshirt and wide trousers set", categoryId: "kids", category: "ملابس أطفال", colors: ["رمادي", "كحلي"], sizes: ["6", "8", "10", "12", "14", "16"], image: n5, colorImages: { "رمادي": n5, "كحلي": n5b }, isNew: true },
   { code: "M-301", name: "أطقم تراك رجالي شتوية", nameEn: "Men winter tracksuit sets", categoryId: "men", category: "ملابس رجالي", colors: ["أسود", "نبيتي"], sizes: ["M", "L", "XL", "2XL"], image: p16, colorImages: { "أسود": p16, "نبيتي": p16alt }, isNew: true },
   { code: "H-401", name: "تشكيلة أطقم شتوية متنوعة", nameEn: "Assorted winter coordinated sets", categoryId: "homewear", category: "هوم وير", colors: ["بني", "أسود"], sizes: ["M", "L", "XL", "2XL"], image: p15, colorImages: { "بني": p15, "أسود": p15alt }, isNew: true },
   { code: "H-402", name: "أطقم بناتي هوم وير", nameEn: "Girls homewear sets", categoryId: "homewear", category: "هوم وير", colors: ["لبني", "بمبي"], sizes: ["4", "6", "8", "10"], image: p18, colorImages: { "لبني": p18, "بمبي": p18alt }, isNew: false },
-  { code: "C-501", name: "تشكيلة كاجوال صيفية للعائلة", nameEn: "Family summer casual collection", categoryId: "casual", category: "كاجوال", colors: ["أزرق", "أصفر", "بمبي"], sizes: ["مشكل"], image: p19, isNew: true },
+  { code: "C-501", name: "تشكيلة كاجوال صيفية للعائلة", nameEn: "Family summer casual collection", categoryId: "casual", category: "كاجوال", colors: ["أزرق", "أصفر", "بمبي"], sizes: ["مشكل"], image: p19, colorImages: { "أزرق": p19, "أصفر": p19yellow, "بمبي": p19pink }, isNew: true },
 ];
 
 export const allColors = [
