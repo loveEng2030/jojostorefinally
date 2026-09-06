@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Phone, MapPin } from "lucide-react";
+import { Phone, MapPin, Lock } from "lucide-react";
 import logo from "@/assets/jojo-logo.png";
 import { ADDRESS, ADDRESS_EN, PHONE, WA_DEFAULT } from "@/lib/data";
 import { useI18n, type TKey } from "@/lib/i18n";
