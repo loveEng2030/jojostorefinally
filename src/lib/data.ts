@@ -62,56 +62,39 @@ export const WA_CATALOG_FULL = waLink(
   "السلام عليكم، أرغب في استلام كتالوج الجملة الكامل وأسعار JOJO Store",
 );
 
-export interface Category {
+export interface Section {
   id: string;
   name: string;
   nameEn: string;
-  description: string;
-  descriptionEn: string;
+}
+
+export const sections: Section[] = [
+  { id: "men", name: "قسم رجالي", nameEn: "Men" },
+  { id: "women", name: "قسم حريمي", nameEn: "Women" },
+  { id: "unisex", name: "قسم محير", nameEn: "Unisex" },
+  { id: "kids", name: "قسم أطفال", nameEn: "Kids" },
+  { id: "newborn", name: "قسم حديثي الولادة", nameEn: "Newborn" },
+];
+
+export interface Category {
+  id: string;
+  sectionId: string;
+  name: string;
+  nameEn: string;
   image: string;
 }
 
 export const categories: Category[] = [
-  {
-    id: "women",
-    name: "ملابس حريمي",
-    nameEn: "Women's clothing",
-    description: "فساتين، بلوزات وأطقم صيفية وشتوية بأحدث الموديلات",
-    descriptionEn: "Dresses, blouses and summer/winter sets in the latest styles",
-    image: p11,
-  },
-  {
-    id: "men",
-    name: "ملابس رجالي",
-    nameEn: "Men's clothing",
-    description: "قمصان، تيشيرتات وبولو بخامات قطن ممتازة",
-    descriptionEn: "Shirts, t-shirts and polos in premium cotton",
-    image: p16,
-  },
-  {
-    id: "kids",
-    name: "ملابس أطفال",
-    nameEn: "Kids' clothing",
-    description: "أطقم أطفال من عمر سنة حتى 14 سنة",
-    descriptionEn: "Kids sets from 1 to 14 years",
-    image: p12,
-  },
-  {
-    id: "homewear",
-    name: "هوم وير",
-    nameEn: "Homewear",
-    description: "بيجامات وأطقم منزلية قطن وفانيلا",
-    descriptionEn: "Pyjamas and home sets in cotton and fleece",
-    image: p15,
-  },
-  {
-    id: "casual",
-    name: "كاجوال",
-    nameEn: "Casual",
-    description: "تيشيرتات وجينز وقطع كاجوال لكل الأعمار",
-    descriptionEn: "T-shirts, jeans and casual pieces for all ages",
-    image: p19,
-  },
+  { id: "men-casual", sectionId: "men", name: "كاجوال", nameEn: "Casual", image: p16 },
+  { id: "men-homewear", sectionId: "men", name: "هوم وير", nameEn: "Homewear", image: p16alt },
+  { id: "women-casual", sectionId: "women", name: "كاجوال", nameEn: "Casual", image: p11 },
+  { id: "women-homewear", sectionId: "women", name: "هوم وير", nameEn: "Homewear", image: p1 },
+  { id: "women-lingerie", sectionId: "women", name: "لانجيري", nameEn: "Lingerie", image: p3 },
+  { id: "unisex-outing", sectionId: "unisex", name: "خروج", nameEn: "Outing", image: p19 },
+  { id: "unisex-homewear", sectionId: "unisex", name: "هوم وير", nameEn: "Homewear", image: p15 },
+  { id: "kids-outing", sectionId: "kids", name: "خروج", nameEn: "Outing", image: p2 },
+  { id: "kids-homewear", sectionId: "kids", name: "هوم وير", nameEn: "Homewear", image: p17 },
+  { id: "newborn", sectionId: "newborn", name: "حديثي الولادة", nameEn: "Newborn", image: n2 },
 ];
 
 export interface Product {
