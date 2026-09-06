@@ -233,7 +233,9 @@ function Dashboard({ onSignOut }: { onSignOut: () => Promise<void> }) {
           <input value={code} onChange={(e) => setCode(e.target.value)} placeholder="الكود مثال W-120" className="rounded-2xl border border-border bg-background px-4 py-3 text-sm" />
           <select value={categoryId} onChange={(e) => setCategoryId(e.target.value)} className="rounded-2xl border border-border bg-background px-4 py-3 text-sm">
             {categories.map((c) => (
-              <option key={c.id} value={c.id}>{c.name}</option>
+              <option key={c.id} value={c.id}>
+                {sections.find((s) => s.id === c.sectionId)?.name} - {c.name}
+              </option>
             ))}
           </select>
           <input value={name} onChange={(e) => setName(e.target.value)} placeholder="اسم المنتج بالعربي" className="rounded-2xl border border-border bg-background px-4 py-3 text-sm" />

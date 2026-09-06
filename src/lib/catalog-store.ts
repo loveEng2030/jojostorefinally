@@ -1,7 +1,14 @@
 import { supabase } from "@/integrations/supabase/client";
-import { products as staticProducts, type Product } from "@/lib/data";
+import { categories, products as staticProducts, sections, type Product } from "@/lib/data";
 
 export type CatalogProduct = Product & { dbId?: string };
+
+export function categoryLabel(categoryId: string): string {
+  const c = categories.find((x) => x.id === categoryId);
+  if (!c) return categoryId;
+  const s = sections.find((x) => x.id === c.sectionId);
+  return s ? `${s.name} - ${c.name}` : c.name;
+}
 
 const SIGNED_URL_TTL = 60 * 60 * 24 * 365 * 5;
 
