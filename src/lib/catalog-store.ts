@@ -34,7 +34,7 @@ export async function fetchCatalog(): Promise<CatalogProduct[]> {
     name: r.name,
     nameEn: r.name_en || r.name,
     categoryId: r.category_id,
-    category: r.category_id,
+    category: categoryLabel(r.category_id),
     colors: r.colors ?? [],
     sizes: r.sizes ?? [],
     image: r.image_url,
