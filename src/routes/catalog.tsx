@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProductCard } from "@/components/site/ProductCard";
 import {
   allColors,
@@ -8,8 +8,10 @@ import {
   products,
   WA_CATALOG_FULL,
 } from "@/lib/data";
+import { fetchCatalog, type CatalogProduct } from "@/lib/catalog-store";
 
 import { useI18n } from "@/lib/i18n";
+
 
 export const Route = createFileRoute("/catalog")({
   head: () => ({
