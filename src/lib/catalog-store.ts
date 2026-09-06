@@ -21,12 +21,18 @@ export async function signedImageUrl(path: string) {
 }
 
 export async function fetchCatalog(): Promise<CatalogProduct[]> {
-  const [{ data: rows }, { data: hidden }] = await Promise.all([
+  const { data: sessionData } = await supabase.auth.getSession();
+  const isSignedIn = Boolean(sessionData.session);
+
+  const [{ data: rows }, hiddenRes] = await Promise.all([
     supabase.from("products").select("*").order("created_at", { ascending: false }),
-    supabase.from("hidden_products").select("code"),
+    // hidden_products is admin-only; anonymous visitors simply get no rows.
+    isSignedIn
+      ? supabase.from("hidden_products").select("code")
+      : Promise.resolve({ data: [] as { code: string }[] }),
   ]);
 
-  const hiddenCodes = new Set((hidden ?? []).map((h) => h.code));
+  const hiddenCodes = new Set((hiddenRes.data ?? []).map((h) => h.code));
 
   const added: CatalogProduct[] = (rows ?? []).map((r) => ({
     dbId: r.id,
