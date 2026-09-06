@@ -85,9 +85,17 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-border py-5 text-center text-xs text-muted-foreground">
-        {t("footer.rights")}
+      <div className="flex items-center justify-center gap-3 border-t border-border py-5 text-center text-xs text-muted-foreground">
+        <span>{t("footer.rights")}</span>
+        <Link
+          to="/admin"
+          aria-label="Admin"
+          className="rounded-full p-1.5 text-muted-foreground/50 transition-colors hover:text-primary"
+        >
+          <Lock className="h-3.5 w-3.5" />
+        </Link>
       </div>
+
     </footer>
   );
 }
