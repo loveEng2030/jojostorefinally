@@ -4,6 +4,7 @@ import { ProductCard } from "@/components/site/ProductCard";
 import {
   allColors,
   categories,
+  sections,
   colorHex,
   products,
   WA_CATALOG_FULL,
