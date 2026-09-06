@@ -92,14 +92,13 @@ function CatalogPage() {
         >
           {t("catalog.all")}
         </button>
-        {sections.map((s) => (
-          <span key={s.id} className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-bold text-muted-foreground">
-              {tx(s.name, s.nameEn)}:
-            </span>
-            {categories
-              .filter((c) => c.sectionId === s.id)
-              .map((c) => (
+        {sections.flatMap((s) => {
+          const secName = tx(s.name, s.nameEn).replace(/^قسم\s+/, "");
+          return categories
+            .filter((c) => c.sectionId === s.id)
+            .map((c) => {
+              const catName = tx(c.name, c.nameEn);
+              return (
                 <button
                   key={c.id}
                   type="button"
@@ -110,11 +109,11 @@ function CatalogPage() {
                       : "border border-border bg-card text-foreground hover:bg-muted"
                   }`}
                 >
-                  {tx(c.name, c.nameEn)}
+                  {catName === secName ? secName : `${secName} - ${catName}`}
                 </button>
-              ))}
-          </span>
-        ))}
+              );
+            });
+        })}
         <button
           type="button"
           onClick={() => setNewOnly((v) => !v)}
