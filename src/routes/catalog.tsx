@@ -92,29 +92,24 @@ function CatalogPage() {
         >
           {t("catalog.all")}
         </button>
-        {sections.map((s) => (
-          <span key={s.id} className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-bold text-muted-foreground">
-              {tx(s.name, s.nameEn)}:
-            </span>
-            {categories
-              .filter((c) => c.sectionId === s.id)
-              .map((c) => (
-                <button
-                  key={c.id}
-                  type="button"
-                  onClick={() => setCat(c.id)}
-                  className={`rounded-full px-5 py-2 text-sm font-bold transition-colors ${
-                    cat === c.id
-                      ? "bg-primary text-primary-foreground"
-                      : "border border-border bg-card text-foreground hover:bg-muted"
-                  }`}
-                >
-                  {tx(c.name, c.nameEn)}
-                </button>
-              ))}
-          </span>
-        ))}
+        {sections.flatMap((s) =>
+          categories
+            .filter((c) => c.sectionId === s.id)
+            .map((c) => (
+              <button
+                key={c.id}
+                type="button"
+                onClick={() => setCat(c.id)}
+                className={`rounded-full px-5 py-2 text-sm font-bold transition-colors ${
+                  cat === c.id
+                    ? "bg-primary text-primary-foreground"
+                    : "border border-border bg-card text-foreground hover:bg-muted"
+                }`}
+              >
+                {tx(s.name, s.nameEn)} - {tx(c.name, c.nameEn)}
+              </button>
+            )),
+        )}
         <button
           type="button"
           onClick={() => setNewOnly((v) => !v)}
