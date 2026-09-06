@@ -40,9 +40,22 @@ function CatalogPage() {
   const [color, setColor] = useState<string>("all");
   const [q, setQ] = useState("");
   const [newOnly, setNewOnly] = useState(false);
+  const [all, setAll] = useState<CatalogProduct[]>(products);
+
+  useEffect(() => {
+    let alive = true;
+    fetchCatalog()
+      .then((rows) => {
+        if (alive) setAll(rows);
+      })
+      .catch(() => undefined);
+    return () => {
+      alive = false;
+    };
+  }, []);
 
   const query = q.trim().toLowerCase();
-  const list = products.filter(
+  const list = all.filter(
     (p) =>
       (cat === "all" || p.categoryId === cat) &&
       (color === "all" || p.colors.includes(color)) &&
@@ -52,6 +65,7 @@ function CatalogPage() {
         p.nameEn.toLowerCase().includes(query) ||
         p.code.toLowerCase().includes(query)),
   );
+
 
   return (
     <div className="mx-auto max-w-6xl px-4 pb-8 pt-32">
