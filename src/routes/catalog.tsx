@@ -92,24 +92,28 @@ function CatalogPage() {
         >
           {t("catalog.all")}
         </button>
-        {sections.flatMap((s) =>
-          categories
+        {sections.flatMap((s) => {
+          const secName = tx(s.name, s.nameEn).replace(/^قسم\s+/, "");
+          return categories
             .filter((c) => c.sectionId === s.id)
-            .map((c) => (
-              <button
-                key={c.id}
-                type="button"
-                onClick={() => setCat(c.id)}
-                className={`rounded-full px-5 py-2 text-sm font-bold transition-colors ${
-                  cat === c.id
-                    ? "bg-primary text-primary-foreground"
-                    : "border border-border bg-card text-foreground hover:bg-muted"
-                }`}
-              >
-                {tx(s.name, s.nameEn)} - {tx(c.name, c.nameEn)}
-              </button>
-            )),
-        )}
+            .map((c) => {
+              const catName = tx(c.name, c.nameEn);
+              return (
+                <button
+                  key={c.id}
+                  type="button"
+                  onClick={() => setCat(c.id)}
+                  className={`rounded-full px-5 py-2 text-sm font-bold transition-colors ${
+                    cat === c.id
+                      ? "bg-primary text-primary-foreground"
+                      : "border border-border bg-card text-foreground hover:bg-muted"
+                  }`}
+                >
+                  {catName === secName ? secName : `${secName} - ${catName}`}
+                </button>
+              );
+            });
+        })}
         <button
           type="button"
           onClick={() => setNewOnly((v) => !v)}
