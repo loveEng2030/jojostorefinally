@@ -5,10 +5,6 @@ import heroPoster from "@/assets/hero-poster.jpg";
 import discoverNew from "@/assets/jojo-editorial-main.jpg";
 import discoverEdit from "@/assets/jojo-editorial-edit.jpg";
 import discoverSizes from "@/assets/jojo-editorial-craft.jpg";
-import stageDesign from "@/assets/jojo-stage-design.jpg";
-import stageFabric from "@/assets/jojo-stage-fabric.jpg";
-import stageCutting from "@/assets/jojo-stage-cutting.jpg";
-import stageProduction from "@/assets/jojo-stage-production.jpg";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { ProductCard } from "@/components/site/ProductCard";
 import { newProducts, WA_B2B, WA_CATALOG } from "@/lib/data";
@@ -46,12 +42,6 @@ const discoverCards = [
 ];
 
 const pillars = [1, 2, 3] as const;
-const stages = [
-  { image: stageDesign, n: 1 },
-  { image: stageFabric, n: 2 },
-  { image: stageCutting, n: 3 },
-  { image: stageProduction, n: 4 },
-];
 const b2bPoints = [1, 2, 3, 4, 5, 6] as const;
 
 function Home() {
@@ -191,40 +181,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Stages */}
-      <section className="cv-auto mx-auto max-w-6xl px-4 py-16">
-        <SectionHeader
-          kicker={t("stages.kicker")}
-          title={t("stages.title")}
-          subtitle={t("stages.subtitle")}
-        />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {stages.map((s) => (
-            <div
-              key={s.n}
-              className="group overflow-hidden rounded-3xl bg-card ring-1 ring-border"
-            >
-              <div className="relative">
-                <Button type="button" variant="ghost" onClick={() => setPreview({ src: s.image, alt: t(`stages.${s.n}.title` as TKey) })} className="absolute inset-0 z-10 h-full w-full rounded-none p-0" aria-label={`${t("common.viewImage")} — ${t(`stages.${s.n}.title` as TKey)}`}>
-                  <span className="sr-only">{t("common.viewImage")}</span><ImageZoomHint />
-                </Button>
-                <img src={s.image} alt={t(`stages.${s.n}.title` as TKey)} loading="lazy" width={1024} height={768} className="aspect-[4/3] w-full object-cover" />
-              </div>
-              <div className="p-6">
-                <span className="font-heading text-sm font-extrabold text-sand">
-                  0{s.n}
-                </span>
-                <h3 className="mt-2 font-heading text-lg font-extrabold">
-                  {t(`stages.${s.n}.title` as TKey)}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {t(`stages.${s.n}.body` as TKey)}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* B2B */}
       <section className="cv-auto bg-cream py-16">
