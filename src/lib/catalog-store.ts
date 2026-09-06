@@ -1,0 +1,43 @@
+import { supabase } from "@/integrations/supabase/client";
+import { products as staticProducts, type Product } from "@/lib/data";
+
+export type CatalogProduct = Product & { dbId?: string };
+
+const SIGNED_URL_TTL = 60 * 60 * 24 * 365 * 5;
+
+export async function signedImageUrl(path: string) {
+  const { data, error } = await supabase.storage
+    .from("product-images")
+    .createSignedUrl(path, SIGNED_URL_TTL);
+  if (error) throw error;
+  return data.signedUrl;
+}
+
+export async function fetchCatalog(): Promise<CatalogProduct[]> {
+  const [{ data: rows }, { data: hidden }] = await Promise.all([
+    supabase.from("products").select("*").order("created_at", { ascending: false }),
+    supabase.from("hidden_products").select("code"),
+  ]);
+
+  const hiddenCodes = new Set((hidden ?? []).map((h) => h.code));
+
+  const added: CatalogProduct[] = (rows ?? []).map((r) => ({
+    dbId: r.id,
+    code: r.code,
+    name: r.name,
+    nameEn: r.name_en || r.name,
+    categoryId: r.category_id,
+    category: r.category_id,
+    colors: r.colors ?? [],
+    sizes: r.sizes ?? [],
+    image: r.image_url,
+    isNew: r.is_new,
+  }));
+
+  return [...added, ...staticProducts].filter((p) => !hiddenCodes.has(p.code));
+}
+
+export async function fetchHiddenCodes(): Promise<string[]> {
+  const { data } = await supabase.from("hidden_products").select("code");
+  return (data ?? []).map((h) => h.code);
+}
