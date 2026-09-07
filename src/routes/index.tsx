@@ -43,11 +43,20 @@ const discoverCards = [
 
 const pillars = [1, 2, 3] as const;
 const orderStages = [
-  { number: "01", image: orderCatalog, key: 1 },
-  { number: "02", image: orderConfirm, key: 2 },
-  { number: "03", image: orderPack, key: 3 },
-  { number: "04", image: orderDelivery, key: 4 },
+  { number: "01", key: 1 },
+  { number: "02", key: 2 },
+  { number: "03", key: 3 },
+  { number: "04", key: 4 },
 ] as const;
+
+function pickRandomProductImages(count: number): string[] {
+  const images = [...new Set(products.map((p) => p.image))];
+  for (let i = images.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [images[i], images[j]] = [images[j], images[i]];
+  }
+  return images.slice(0, count);
+}
 const b2bPoints = [1, 2, 3, 4, 5, 6] as const;
 
 function Home() {
