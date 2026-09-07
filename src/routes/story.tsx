@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { HeartHandshake, Sparkles, Zap } from "lucide-react";
-import poster from "@/assets/hero-poster.jpg";
 import { useI18n } from "@/lib/i18n";
+import { useSiteImage } from "@/lib/site-content";
 
 export const Route = createFileRoute("/story")({
   head: () => ({

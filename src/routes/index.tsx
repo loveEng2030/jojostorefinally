@@ -1,19 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import heroVideo from "@/assets/hero-video.mp4";
-import heroPoster from "@/assets/hero-poster.jpg";
-import discoverNew from "@/assets/jojo-editorial-main.jpg";
-import discoverEdit from "@/assets/jojo-editorial-edit.jpg";
-import discoverSizes from "@/assets/jojo-editorial-craft.jpg";
-import orderCatalog from "@/assets/jojo-order-catalog.jpg";
-import orderConfirm from "@/assets/jojo-order-confirm.jpg";
-import orderPack from "@/assets/jojo-order-pack.jpg";
-import orderDelivery from "@/assets/jojo-order-delivery.jpg";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { ProductCard } from "@/components/site/ProductCard";
 import { newProducts, WA_B2B, WA_CATALOG } from "@/lib/data";
 import { useState } from "react";
 import { useI18n, type TKey } from "@/lib/i18n";
+import { useSiteContent } from "@/lib/site-content";
+import { imageFallback } from "@/lib/site-assets";
 import { Button } from "@/components/ui/button";
 import { ImageLightbox, ImageZoomHint } from "@/components/site/ImageLightbox";
 
@@ -40,22 +34,24 @@ export const Route = createFileRoute("/")({
 });
 
 const discoverCards = [
-  { image: discoverNew, tag: "NEW COLLECTION", key: "discover.card1" as TKey, layout: "md:col-start-2 md:row-span-2" },
-  { image: discoverEdit, tag: "JOJO EDIT", key: "discover.card2" as TKey, layout: "md:col-start-1 md:row-start-1" },
-  { image: discoverSizes, tag: "ALL SIZES", key: "discover.card3" as TKey, layout: "md:col-start-1 md:row-start-2" },
+  { imgKey: "discover.1", tag: "NEW COLLECTION", key: "discover.card1" as TKey, layout: "md:col-start-2 md:row-span-2" },
+  { imgKey: "discover.2", tag: "JOJO EDIT", key: "discover.card2" as TKey, layout: "md:col-start-1 md:row-start-1" },
+  { imgKey: "discover.3", tag: "ALL SIZES", key: "discover.card3" as TKey, layout: "md:col-start-1 md:row-start-2" },
 ];
 
 const pillars = [1, 2, 3] as const;
 const orderStages = [
-  { number: "01", image: orderCatalog, key: 1 },
-  { number: "02", image: orderConfirm, key: 2 },
-  { number: "03", image: orderPack, key: 3 },
-  { number: "04", image: orderDelivery, key: 4 },
+  { number: "01", imgKey: "stages.1", key: 1 },
+  { number: "02", imgKey: "stages.2", key: 2 },
+  { number: "03", imgKey: "stages.3", key: 3 },
+  { number: "04", imgKey: "stages.4", key: 4 },
 ] as const;
 const b2bPoints = [1, 2, 3, 4, 5, 6] as const;
 
 function Home() {
   const { t, lang } = useI18n();
+  const { images } = useSiteContent();
+  const img = (key: string) => images[key] ?? imageFallback(key);
   const Arrow = lang === "ar" ? ArrowLeft : ArrowRight;
   const [preview, setPreview] = useState<{ src: string; alt: string } | null>(null);
 
@@ -65,7 +61,8 @@ function Home() {
       <section className="relative flex min-h-[100svh] items-center overflow-hidden">
         <video
           src={heroVideo}
-          poster={heroPoster}
+          poster={img("hero.poster")}
+
           autoPlay
           muted
           loop
@@ -147,14 +144,14 @@ function Home() {
               <Button
                 type="button"
                 variant="ghost"
-                onClick={() => setPreview({ src: c.image, alt: t(c.key) })}
+                onClick={() => setPreview({ src: img(c.imgKey), alt: t(c.key) })}
                 className="absolute inset-0 z-10 h-full w-full rounded-none p-0"
                 aria-label={`${t("common.viewImage")} — ${t(c.key)}`}
               >
                 <span className="sr-only">{t("common.viewImage")}</span>
                 <ImageZoomHint />
               </Button>
-              <img src={c.image} alt={t(c.key)} loading="lazy" width={1536} height={1024} className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={img(c.imgKey)} alt={t(c.key)} loading="lazy" width={1536} height={1024} className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/10 to-transparent" />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 p-6 text-start text-white">
                 <span className="text-[11px] font-bold tracking-widest opacity-80">
@@ -211,7 +208,7 @@ function Home() {
               <article key={stage.number} className="overflow-hidden rounded-2xl bg-white/10 ring-1 ring-white/15">
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
-                    src={stage.image}
+                    src={img(stage.imgKey)}
                     alt={t(`stages.${stage.key}.title` as TKey)}
                     loading="lazy"
                     width={768}

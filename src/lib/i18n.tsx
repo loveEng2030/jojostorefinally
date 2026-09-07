@@ -6,6 +6,8 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { useSiteContent } from "@/lib/site-content";
+
 
 export type Lang = "ar" | "en";
 
@@ -330,6 +332,7 @@ const I18nContext = createContext<I18nValue>(defaultI18n);
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>("ar");
+  const { content } = useSiteContent();
 
   useEffect(() => {
     const saved = window.localStorage.getItem("jojo-lang");
@@ -351,11 +354,16 @@ export function I18nProvider({ children }: { children: ReactNode }) {
         setLangState(l);
         window.localStorage.setItem("jojo-lang", l);
       },
-      t: (key) => dict[key][idx],
+      t: (key) => {
+        const override = content[key];
+        const custom = override ? (lang === "ar" ? override.ar : override.en) : "";
+        return custom.trim() ? custom : dict[key][idx];
+      },
       tx: (ar, en) => (lang === "ar" ? ar : en),
       tColor: (ar) => (lang === "ar" ? ar : (colorEn[ar] ?? ar)),
     };
-  }, [lang]);
+  }, [lang, content]);
+
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 }
