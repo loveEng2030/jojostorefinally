@@ -1,19 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import heroVideo from "@/assets/hero-video.mp4";
-import heroPoster from "@/assets/hero-poster.jpg";
-import discoverNew from "@/assets/jojo-editorial-main.jpg";
-import discoverEdit from "@/assets/jojo-editorial-edit.jpg";
-import discoverSizes from "@/assets/jojo-editorial-craft.jpg";
-import orderCatalog from "@/assets/jojo-order-catalog.jpg";
-import orderConfirm from "@/assets/jojo-order-confirm.jpg";
-import orderPack from "@/assets/jojo-order-pack.jpg";
-import orderDelivery from "@/assets/jojo-order-delivery.jpg";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { ProductCard } from "@/components/site/ProductCard";
 import { newProducts, WA_B2B, WA_CATALOG } from "@/lib/data";
 import { useState } from "react";
 import { useI18n, type TKey } from "@/lib/i18n";
+import { useSiteContent } from "@/lib/site-content";
+import { imageFallback } from "@/lib/site-assets";
 import { Button } from "@/components/ui/button";
 import { ImageLightbox, ImageZoomHint } from "@/components/site/ImageLightbox";
 
