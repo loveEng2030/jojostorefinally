@@ -74,6 +74,7 @@ export const sections: Section[] = [
   { id: "unisex", name: "قسم محير", nameEn: "Unisex" },
   { id: "kids", name: "قسم أطفال", nameEn: "Kids" },
   { id: "newborn", name: "قسم حديثي الولادة", nameEn: "Newborn" },
+  { id: "shaabi", name: "قسم شعبي", nameEn: "Popular" },
 ];
 
 export interface Category {
@@ -95,6 +96,7 @@ export const categories: Category[] = [
   { id: "kids-outing", sectionId: "kids", name: "خروج", nameEn: "Outing", image: p2 },
   { id: "kids-homewear", sectionId: "kids", name: "هوم وير", nameEn: "Homewear", image: p17 },
   { id: "newborn", sectionId: "newborn", name: "حديثي الولادة", nameEn: "Newborn", image: n2 },
+  { id: "shaabi", sectionId: "shaabi", name: "شعبي", nameEn: "Popular", image: p19 },
 ];
 
 export interface Product {
