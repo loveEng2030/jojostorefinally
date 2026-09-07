@@ -34,22 +34,24 @@ export const Route = createFileRoute("/")({
 });
 
 const discoverCards = [
-  { image: discoverNew, tag: "NEW COLLECTION", key: "discover.card1" as TKey, layout: "md:col-start-2 md:row-span-2" },
-  { image: discoverEdit, tag: "JOJO EDIT", key: "discover.card2" as TKey, layout: "md:col-start-1 md:row-start-1" },
-  { image: discoverSizes, tag: "ALL SIZES", key: "discover.card3" as TKey, layout: "md:col-start-1 md:row-start-2" },
+  { imgKey: "discover.1", tag: "NEW COLLECTION", key: "discover.card1" as TKey, layout: "md:col-start-2 md:row-span-2" },
+  { imgKey: "discover.2", tag: "JOJO EDIT", key: "discover.card2" as TKey, layout: "md:col-start-1 md:row-start-1" },
+  { imgKey: "discover.3", tag: "ALL SIZES", key: "discover.card3" as TKey, layout: "md:col-start-1 md:row-start-2" },
 ];
 
 const pillars = [1, 2, 3] as const;
 const orderStages = [
-  { number: "01", image: orderCatalog, key: 1 },
-  { number: "02", image: orderConfirm, key: 2 },
-  { number: "03", image: orderPack, key: 3 },
-  { number: "04", image: orderDelivery, key: 4 },
+  { number: "01", imgKey: "stages.1", key: 1 },
+  { number: "02", imgKey: "stages.2", key: 2 },
+  { number: "03", imgKey: "stages.3", key: 3 },
+  { number: "04", imgKey: "stages.4", key: 4 },
 ] as const;
 const b2bPoints = [1, 2, 3, 4, 5, 6] as const;
 
 function Home() {
   const { t, lang } = useI18n();
+  const { images } = useSiteContent();
+  const img = (key: string) => images[key] ?? imageFallback(key);
   const Arrow = lang === "ar" ? ArrowLeft : ArrowRight;
   const [preview, setPreview] = useState<{ src: string; alt: string } | null>(null);
 
@@ -59,7 +61,8 @@ function Home() {
       <section className="relative flex min-h-[100svh] items-center overflow-hidden">
         <video
           src={heroVideo}
-          poster={heroPoster}
+          poster={img("hero.poster")}
+
           autoPlay
           muted
           loop
