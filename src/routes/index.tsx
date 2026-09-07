@@ -5,6 +5,10 @@ import heroPoster from "@/assets/hero-poster.jpg";
 import discoverNew from "@/assets/jojo-editorial-main.jpg";
 import discoverEdit from "@/assets/jojo-editorial-edit.jpg";
 import discoverSizes from "@/assets/jojo-editorial-craft.jpg";
+import orderCatalog from "@/assets/jojo-order-catalog.jpg";
+import orderConfirm from "@/assets/jojo-order-confirm.jpg";
+import orderPack from "@/assets/jojo-order-pack.jpg";
+import orderDelivery from "@/assets/jojo-order-delivery.jpg";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { ProductCard } from "@/components/site/ProductCard";
 import { newProducts, WA_B2B, WA_CATALOG } from "@/lib/data";
@@ -42,6 +46,12 @@ const discoverCards = [
 ];
 
 const pillars = [1, 2, 3] as const;
+const orderStages = [
+  { number: "01", image: orderCatalog, key: 1 },
+  { number: "02", image: orderConfirm, key: 2 },
+  { number: "03", image: orderPack, key: 3 },
+  { number: "04", image: orderDelivery, key: 4 },
+] as const;
 const b2bPoints = [1, 2, 3, 4, 5, 6] as const;
 
 function Home() {
@@ -178,6 +188,49 @@ function Home() {
               </p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Order journey */}
+      <section className="cv-auto bg-charcoal py-16 text-white">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="mb-10 text-center">
+            <span className="inline-block rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold text-primary">
+              {t("stages.kicker")}
+            </span>
+            <h2 className="mt-4 font-heading text-3xl font-extrabold md:text-4xl">
+              {t("stages.title")}
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-white/70 md:text-base">
+              {t("stages.subtitle")}
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {orderStages.map((stage) => (
+              <article key={stage.number} className="overflow-hidden rounded-2xl bg-white/10 ring-1 ring-white/15">
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={stage.image}
+                    alt={t(`stages.${stage.key}.title` as TKey)}
+                    loading="lazy"
+                    width={768}
+                    height={900}
+                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                </div>
+                <div className="p-5">
+                  <span className="font-heading text-sm font-extrabold text-primary">{stage.number}</span>
+                  <h3 className="mt-2 font-heading text-lg font-extrabold">
+                    {t(`stages.${stage.key}.title` as TKey)}
+                  </h3>
+                  <p className="mt-2 text-xs leading-relaxed text-white/65">
+                    {t(`stages.${stage.key}.body` as TKey)}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
