@@ -53,7 +53,9 @@ function pickRandomProductImages(count: number): string[] {
   const images = [...new Set(products.map((p) => p.image))];
   for (let i = images.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [images[i], images[j]] = [images[j], images[i]];
+    const tmp = images[i] as string;
+    images[i] = images[j] as string;
+    images[j] = tmp;
   }
   return images.slice(0, count);
 }
