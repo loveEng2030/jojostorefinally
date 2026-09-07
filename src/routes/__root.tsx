@@ -15,6 +15,8 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { WhatsAppFloat } from "@/components/site/WhatsAppFloat";
 import { I18nProvider } from "@/lib/i18n";
+import { SiteContentProvider } from "@/lib/site-content";
+
 
 function NotFoundComponent() {
   return (
