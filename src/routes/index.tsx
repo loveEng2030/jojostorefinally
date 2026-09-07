@@ -144,14 +144,14 @@ function Home() {
               <Button
                 type="button"
                 variant="ghost"
-                onClick={() => setPreview({ src: c.image, alt: t(c.key) })}
+                onClick={() => setPreview({ src: img(c.imgKey), alt: t(c.key) })}
                 className="absolute inset-0 z-10 h-full w-full rounded-none p-0"
                 aria-label={`${t("common.viewImage")} — ${t(c.key)}`}
               >
                 <span className="sr-only">{t("common.viewImage")}</span>
                 <ImageZoomHint />
               </Button>
-              <img src={c.image} alt={t(c.key)} loading="lazy" width={1536} height={1024} className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={img(c.imgKey)} alt={t(c.key)} loading="lazy" width={1536} height={1024} className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/10 to-transparent" />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 p-6 text-start text-white">
                 <span className="text-[11px] font-bold tracking-widest opacity-80">
@@ -208,7 +208,7 @@ function Home() {
               <article key={stage.number} className="overflow-hidden rounded-2xl bg-white/10 ring-1 ring-white/15">
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
-                    src={stage.image}
+                    src={img(stage.imgKey)}
                     alt={t(`stages.${stage.key}.title` as TKey)}
                     loading="lazy"
                     width={768}
